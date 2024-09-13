@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Product = require('./models/ProductModel');
 
 const app = express();
 
@@ -16,6 +17,16 @@ app.get('/status', (request, response) => {
     Status: 'Runnning',
   };
   response.send(status);
+});
+
+app.post('/product', async (req, res) => {
+  try {
+    const product = await Product.create(req.body);
+    res.status(200).json(product);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
 });
 
 mongoose
