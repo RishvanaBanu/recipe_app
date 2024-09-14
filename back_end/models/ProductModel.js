@@ -4,7 +4,7 @@ const ProductSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      require: [true, 'UserName is required'],
+      require: [true, 'Please enter the name'],
     },
     quantity: {
       type: Number,
